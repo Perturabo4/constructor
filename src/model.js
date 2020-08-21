@@ -1,8 +1,8 @@
 import rex from './assets/rex.jpg';
-import {Block} from './classes/blocks';
+import {Block, TitleBlock} from './classes/blocks';
 
 export const model =  [
-    new Block('title', 'Test Title', {
+    new TitleBlock('Test Title', {
         tag: 'h2',
         styles: 'background: darkred; color: #fff; text-align: center;'
     } ),
