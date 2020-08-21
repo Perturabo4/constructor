@@ -3,14 +3,14 @@ export const model =  [
     type: 'title',
     value: 'Test Title',
     options: {
-
+            styles: 'background: darkred; color: #fff;'
         }
     },
     {
         type: 'text',
         value: 'Text content',
         options: {
-    
+                styles: 'background: blue; color: #4c4c4c;'
             }
     },
     {
@@ -21,7 +21,7 @@ export const model =  [
             '3 text'
         ],
         options: {
-    
+            styles: 'padding: 1rem;'
             }
     }
 ]
