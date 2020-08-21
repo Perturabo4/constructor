@@ -1,6 +1,7 @@
+import {row, col} from '../utils';
+
 export class Block {
-    constructor(type, value, options){
-        this.type = type;
+    constructor(value, options){
         this.value = value;
         this.options = options;
     }
@@ -12,7 +13,7 @@ export class Block {
 
 export class TitleBlock extends Block {
     constructor(value, options){
-        super('title', value, options)
+        super(value, options)
     }
 
     toHTML() {
@@ -22,4 +23,40 @@ export class TitleBlock extends Block {
             styles
         );
     }
+}
+
+export class ImageBlock extends Block {
+    constructor(value, options){
+        super(value, options)
+    }
+
+    toHTML() {
+        const {alt, styles, imageStyles} = this.options;
+        const html = `<image src="${this.value}" alt="${alt}" style="${imageStyles}" />`;
+        return row(col(html), styles);
+    }
+}
+
+export class TextBlock extends Block {
+    constructor(value, options){
+        super(value, options)
+    }
+
+    toHTML() {
+        return row(
+            col(`<p>${this.value}</p>`),
+            this.options.styles
+        );
+    }
+}
+
+export class TextColumnsBlock extends Block {
+    constructor(value, options){
+        super(value, options)
+    }
+
+    toHTML() {
+            const html = this.value.map( item => col(item))
+            return row(html.join(""), this.options.styles);
+        }
 }
