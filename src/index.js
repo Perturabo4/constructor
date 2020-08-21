@@ -10,6 +10,8 @@ model.forEach( block => {
     } else if(block.type === 'textColumns') {
         html = textColumns(block);
     }
+
+    document.querySelector('#site').insertAdjacentHTML('beforeend');
 })
 
 function title(block) {
