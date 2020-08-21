@@ -14,7 +14,7 @@ export const model =  [
             }
     },
     {
-        type: 'textColums',
+        type: 'textColumns',
         value: [
             '1 text',
             '2 text',

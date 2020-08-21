@@ -1,5 +1,8 @@
 import {model} from './model';
+import {title, text, textColumns} from './templates';
 import './css/main.css';
+
+const site = document.querySelector('#site');
 
 model.forEach( block => {
     let html;
@@ -11,34 +14,6 @@ model.forEach( block => {
         html = textColumns(block);
     }
 
-    document.querySelector('#site').insertAdjacentHTML('beforeend');
+    site.insertAdjacentHTML('beforeend', html);
 })
 
-function title(block) {
-    return `
-    <div class="row">
-        <div class="col-sm">
-            <h1>${block.value}</h1>
-        </div>
-    </div>
-    `;
-}
-
-function text(block) {
-    return `
-    <div class="row">
-        <div class="col-sm">
-            <p>${block.value}</p>
-        </div>
-    </div>
-    `;
-}
-
-function textColumns(block) {
-    const html = block.value.map( item => `<div class="col-sm">${item}</div>`)
-    return `
-    <div class="row">
-        ${html}
-    </div>
-    `;
-}
