@@ -2,6 +2,7 @@ import {model} from './model';
 import {templates} from './templates';
 import './css/main.css';
 
+
 const site = document.querySelector('#site');
 
 model.forEach( block => {

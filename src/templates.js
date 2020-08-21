@@ -1,9 +1,10 @@
 import { row, col } from "./utils";
 
 function title(block) {
+    const {tag, styles} = block.options
     return row (
-        col(`<h1>${block.value}</h1>`),
-        block.options.styles
+        col(`<${tag}>${block.value}</${tag}>`),
+        styles
     );
 }
 
@@ -19,8 +20,15 @@ function textColumns(block) {
     return row(html.join(""), block.options.styles);
 }
 
+function image(block) {
+    const {alt, styles, imageStyles} = block.options;
+    const html = `<image src="${block.value}" alt="${alt}" style="${imageStyles}" />`;
+    return row(col(html), styles);
+}
+
 export const templates = {
     title,
     text,
-    textColumns
+    textColumns,
+    image
 }
