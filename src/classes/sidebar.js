@@ -1,17 +1,32 @@
+import { TextBlock, TitleBlock } from "./blocks";
+
 export class Sidebar {
-    constructor(selector) {
+    constructor(selector, update) {
         this.$el = document.querySelector(selector);
+        this.update = update;
 
         this.init();
     }
 
     init() {
-        this.$el.addEventListener('submit', this.addBlock);
+        this.$el.addEventListener('submit', this.addBlock.bind(this));
         this.$el.innerHTML = this.template;
     }
 
     addBlock(event) {
         event.preventDefault();
+        const type = event.target.name;
+        const value = event.target.value.value;
+        const style = event.target.style.value;
+
+        const Constructor = type === 'text' ? TextBlock : TitleBlock;
+
+        const newBlock = new Constructor(value, {styles: style});
+
+        this.update(newBlock);
+
+        event.target.value.value = '';
+        event.target.style.value = '';
     }
 
     get template() {

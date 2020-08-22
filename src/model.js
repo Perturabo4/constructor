@@ -1,18 +1,30 @@
 import rex from './assets/rex.jpg';
 import {TitleBlock, ImageBlock, TextBlock, TextColumnsBlock} from './classes/blocks';
+import { css } from './utils';
 
 export const model =  [
     new TitleBlock('Test Title', {
         tag: 'h2',
-        styles: 'background: darkred; color: #fff; text-align: center;'
+        styles: css({
+            background: 'darkred',
+            color: '#fff',
+            'text-align': 'center'
+        })
     } ),
     new ImageBlock(rex, {
         alt: 'T-REX',
-        styles: 'text-align: center;',
-        imageStyles: 'width: 300px; max-width: 100%;'
+        styles: css({
+            'text-align': 'center'
+        }),
+        imageStyles: css({
+            width: '300px'
+        })
     }),
     new TextBlock('Text content', {
-        styles: 'background: blue; color: #4c4c4c;'
+        styles: css({
+            background: 'steelblue',
+            color: 'white'
+        })
     }),
     new TextColumnsBlock( [
         '1 text',

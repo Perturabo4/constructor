@@ -4,7 +4,13 @@ import { Site } from './classes/site';
 import './css/main.css';
 
 const site = new Site('#site');
-const sidebar = new Sidebar('#panel');
+
+const updateCallback = (newBlock) => {
+    model.push(newBlock);
+    site.render(model);
+}
+
+const sidebar = new Sidebar('#panel', updateCallback);
 
 site.render(model);
 
